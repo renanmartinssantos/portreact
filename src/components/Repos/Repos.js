@@ -3,21 +3,21 @@ import React from "react";
 export default function Repos(props) {
     const reposList = [
         {
-            image: '/assets/images/doingdev.svg',
+            image: '/assets/img/IncidentesBrasil2023.png',
             title: 'Incidentes Brasil 2023',
             descriptionBR: 'A ideia do projeto  foi identificar quais são os acidentes causados no Brasil e o Por que. Além de treinar habilidades em Python e suas bibliotecas para Ciência de Dados.',
             descriptionUS: 'The idea of the project was to identify what are the accidents caused in Brazil and Why. In addition to training skills in Python and its libraries for Data Science.',
             link: 'https://github.com/RenanMartinssantos/IncidentesBrasil2023'
         },
         {
-            image: '/assets/images/doingdev-mobile.svg',
+            image: '/assets/img/whatspy.png',
             title: 'Whatspy',
             descriptionBR: 'Automação de Mensagem via Whatsapp diariamente puxando dados de uma planilha Excel, como mensagem e contatos.',
             descriptionUS: 'Daily Whatsapp Message Automation pulling data from an Excel spreadsheet, such as message and contacts.',
             link: 'https://github.com/renanmartinssantos/whatspy'
         },
         {
-            image: '/assets/images/firebasechat.svg',
+            image: '/assets/img/GarciaChanllange.png',
             title: 'Desafio Change RGB',
             descriptionBR: 'Desafio feito para que pudessemos treinar nossas habilidades de Matriz alterando cores em fotos.',
             descriptionUS: 'Challenge done so that we could train our Matrix skills by changing colors in photos.',
