@@ -6,7 +6,7 @@ export default function Navbar(props) {
 
   const downloadFile = () => {
     saveAs(
-        'https://drive.google.com/file/d/1Mhj3bRWyhDrwgnQ6kbyDtr-YdlyqKXlZ/view?usp=sharing',
+        '/assets/files/RenanMartinsCV.pdf',
         'RenanMartinsCV.pdf'
       );
   };
