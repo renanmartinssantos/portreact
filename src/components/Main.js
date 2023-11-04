@@ -60,7 +60,7 @@ export default function Main(props) {
                       <p className={(isDarkTheme ? "text-sm text-white body-font font-poppins" : 
                                                   "text-sm text-black body-font font-poppins")} style={{ maxWidth: "450px" }}>
                       {(isEnglish ? 
-                      'Hi, I am Renan. I develop solutions for Web, Mobile and Desktop. Currently, I am transitioning my career to the area of Data Science.' : 
+                      "Hi, I'm Renan. I develop solutions for Web, Mobile and Desktop. Currently, I am transitioning my career to the area of Data Science." : 
                       'Olá, eu sou Renan. Desenvolvo soluções para Web, Mobile e Desktop. Atualmente, estou em transição de carreira para a área de Ciência de Dados.')}
                       </p>
                     </div>
@@ -140,7 +140,7 @@ export default function Main(props) {
                   <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400" : 
                 "mt-4 text-lg leading-relaxed text-gray-600")}>
 
-                  {(isEnglish ? "I am a Fullstack Developer specialized in PHP, ReactJS. In transition to Data Analysis."+
+                  {(isEnglish ? "I'm a Fullstack Developer specialized in PHP, ReactJS. In transition to Data Analysis."+
                                 "I worked with development of applications for Excel, I developed parts of a room reservation system and did maintenance." : 
                                 "Sou Fullstack Developer especializado em PHP, ReactJS. Em transição para Análise de Dados." +
                                 "Trabalhei com desenvolvimento de aplicações para Excel, desenvolvi partes de um sistema de reserva de sala e fiz manutenções.")}
