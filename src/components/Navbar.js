@@ -88,7 +88,7 @@ export default function Navbar(props) {
                 type="button"
                 style={{ transition: "all .15s ease" }}
               >
-                {(props.isEnglish ? "Let's Talk!" : "Vamos duelar!" )}
+                {(props.isSecret ? (props.isEnglish ? "Let's Duel!" : "Vamos Duelar!" ) : (props.isEnglish ? "Let's Talk!" : "Vamos Conversar!" ))}
               </button>
               </a>
             </li>
