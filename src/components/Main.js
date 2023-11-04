@@ -1,16 +1,24 @@
 import React from "react";
+import Repos from "./Repos/Repos";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 
+export default function Main(props) {
+  
+  const [isDarkTheme, setIsDarkTheme] = React.useState(props.isDarkTheme);
+  const [isEnglish, setIsEnglish] = React.useState(false);
 
-
-export default function Main() {
   return (
     <>
+      <Navbar isDarkTheme={isDarkTheme} isEnglish={isEnglish}/>
       <main>
-        <div className="relative pt-32 pb-32 flex content-center items-center justify-center border-none"
+        <section className="relative">
+        <div className="pt-32 pb-32 flex content-center items-center justify-center border-none"
             style={{
               minHeight: "75vh"
             }}>
-          <div className="absolute top-0 w-full h-full bg-center bg-cover">
+          <div className="absolute top-0 w-full h-full bg-center bg-cover ">
             <video
               autoPlay
               loop
@@ -23,12 +31,17 @@ export default function Main() {
               />
               Your browser does not support the video tag.
             </video>
+            
           </div>
-          <span id="blackOverlay" className="w-full h-full  backdrop-brightness-50 absolute bg opacity-90 bg-neutral-900"></span>
+          
+          <span id="blackOverlay" className={(isDarkTheme ? "w-full h-full  backdrop-brightness-50 absolute bg opacity-90 bg-neutral-900" : 
+          "w-full h-full  backdrop-brightness-50 absolute bg opacity-90 bg-white")}></span>
           <div className="container relative mx-auto">
+            
               <div className="items-center flex flex-wrap">
                 <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                    <h1 className="text-white text-5xl body-font font-poppins">
+                    <h1 className={(isDarkTheme ? "text-white text-5xl body-font font-poppins" : 
+                                                  "text-black text-5xl body-font font-poppins")}>
                       Renan Martins
                     </h1>
                     <div className="w-full px-1 lg:order-2 flex justify-center pt-24 pb-52">
@@ -36,16 +49,19 @@ export default function Main() {
                             <img
                               alt="..."
                               src={"./assets/img/profile.png"}
-                              className="shadow-xl  rounded-full h-auto align-middle outline-2 outline outline-purple-900 border-none absolute -m-16 -ml-32 lg:-ml-26"
+                              className="shadow-xl  rounded-full h-auto align-middle outline-2 outline outline-sky-900 border-none absolute -m-16 -ml-32 lg:-ml-26"
                               style={{ maxWidth: "250px" }}
                             />
                         </div>
                     </div>
-                    <div class="badge bg-purple-900 text-white"><div class="text-uppercase">Fullstack Developer &middot; Data Analyst</div></div>
+                    <div className="badge bg-sky-900 text-white"><div className="text-uppercase">Fullstack Developer &middot; Data Analyst</div></div>
 
                     <div className="w-full px-1 lg:order-2 flex justify-center mt-6 text-center ">
-                      <p className="text-sm text-white body-font font-poppins" style={{ maxWidth: "450px" }}>
-                        Olá, eu sou Renan. Desenvolvo soluções para Web, Mobile e Desktop. Atualmente, estou em transição de carreira para a área de Ciência de Dados.
+                      <p className={(isDarkTheme ? "text-sm text-white body-font font-poppins" : 
+                                                  "text-sm text-black body-font font-poppins")} style={{ maxWidth: "450px" }}>
+                      {(isEnglish ? 
+                      'Hi, I am Renan. I develop solutions for Web, Mobile and Desktop. Currently, I am transitioning my career to the area of Data Science.' : 
+                      'Olá, eu sou Renan. Desenvolvo soluções para Web, Mobile e Desktop. Atualmente, estou em transição de carreira para a área de Ciência de Dados.')}
                       </p>
                     </div>
                     <div className="mt-6">
@@ -57,32 +73,8 @@ export default function Main() {
               </div>
           </div>
           <div
-            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
-            style={{ height: "70px" }}
-          >
-            <svg
-              className="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
-            >
-              <polygon
-                className="text-gray-300 fill-current"
-                points="2560 0 2560 100 0 100"
-              ></polygon>
-            </svg>
-          </div>
-        </div>
-
-
-
-        <section className="relative py-20 pt-20 pb-48 border-none">
-          <div
-            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-            style={{ height: "80px" }}
+            className="top-auto left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+            style={{ height: "70px", bottom: "-1px"}}
           >
             <svg
               className="absolute bottom-0 overflow-hidden"
@@ -99,6 +91,34 @@ export default function Main() {
               ></polygon>
             </svg>
           </div>
+          
+        </div>
+        
+        </section>
+
+
+        <section className={(isDarkTheme ? "relative py-20 pt-20 pb-48 border-none bottom-0 bg-black" : 
+          "relative py-20 pt-20 pb-48 border-none bottom-0")}>
+          <div
+            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+            style={{ height: "80px" , bottom: "-1px"}}
+          >
+            <svg
+              className="absolute bottom-0 overflow-hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className={(isDarkTheme ? "text-black fill-current" : 
+                "text-white fill-current")}
+                points="2560 0 2560 100 0 100"
+              ></polygon>
+            </svg>
+          </div>
 
           <div className="container mx-auto px-4">
             <div className="items-center flex flex-wrap">
@@ -111,40 +131,57 @@ export default function Main() {
               </div>
               <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
                 <div className="md:pr-12">
-                  {/* <div className="text-purple-50 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-purple-900">
-                    <i className="fas fa-rocket text-xl"></i>
-                  </div> */}
-                  <h3 className="text-3xl font-semibold">
-                  Um pouco sobre quem sou
+                  <h3 className={(isDarkTheme ? "text-3xl font-semibold pt-10 text-white" : 
+                "text-3xl font-semibold pt-10")}>
+                  {(isEnglish ? 
+                      'A little about me' : 
+                      'Um pouco sobre quem sou')}
                   </h3>
-                  <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                  Sou <b>Fullstack Developer</b> especializado em PHP, ReactJS. Em transição para <b>Análise de Dados.</b>
-                  Trabalhei com desenvolvimento de aplicações para Excel, desenvolvi partes de um sistema de reserva de sala e fiz manutenções. 
+                  <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400" : 
+                "mt-4 text-lg leading-relaxed text-gray-600")}>
+
+                  {(isEnglish ? "I am a Fullstack Developer specialized in PHP, ReactJS. In transition to Data Analysis."+
+                                "I worked with development of applications for Excel, I developed parts of a room reservation system and did maintenance." : 
+                                "Sou Fullstack Developer especializado em PHP, ReactJS. Em transição para Análise de Dados." +
+                                "Trabalhei com desenvolvimento de aplicações para Excel, desenvolvi partes de um sistema de reserva de sala e fiz manutenções.")}
+                 
                   </p>
-                  <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                  Após isso, fui me aprimorando e melhorando. Além das empresas que passei e que me deram direcionamento, por um tempo, fui freelancer.
-                  Aprendi nesse momento, o que é ter <b>senso de dono</b>, assim como, ter <b>gestão de tempo.</b> 
+                  <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400" : 
+                "mt-4 text-lg leading-relaxed text-gray-600")}>
+
+                  {(isEnglish ? "After that, I kept refining and improving myself. Besides the companies I worked for, which provided me with guidance. " +
+                                "I freelanced for a while. It was during this time that I learned what it means to have a 'sense of ownership,' " + 
+                                "as well as the importance of time management. " : 
+                                "Após isso, fui me aprimorando e melhorando. Além das empresas que passei e que me deram direcionamento, por um tempo, fui freelancer. " +
+                                "Aprendi nesse momento, o que é ter <b>senso de dono</b>, assim como, ter gestão de tempo.")}
+                  
                   </p>
-                  <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                  Participei ativamente durante esse tempo, em equipes de eSports, atuando como capitão e gerenciando pessoas.
-                  E cá estou, renovando conhecimento, me graduando em <b>Ciência de Dados</b> pela <b>Fatec Rubens Lara Baixada Santista</b> 
-                  e transacionando para área de análise de dados.
+                  <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400" : 
+                "mt-4 text-lg leading-relaxed text-gray-600")}>
+                  {(isEnglish ? "I actively participated during this time, in eSports teams, serving as a captain and managing people. " +
+                                "And here I am, renewing my knowledge, graduating in Data Science from Fatec Rubens Lara Baixada Santista "+
+                                "and transitioning to the field of data analysis." : 
+                                "Participei ativamente durante esse tempo, em equipes de eSports, atuando como capitão e gerenciando pessoas. " +
+                                "E cá estou, renovando conhecimento, me graduando em Ciência de Dados pela Fatec Rubens Lara Baixada Santista "+
+                                "e migrando para área de análise de dados.")}  
                   </p>
-                  <h4 className="text-2xl font-semibold mt-5">
-                    Algumas habilidades pessoais
+                  <h4 className={(isDarkTheme ? "text-2xl font-semibold mt-5 text-white" : 
+                "text-2xl font-semibold mt-5")}>
+                  {(isEnglish ? "Some personal skills" : "Algumas habilidades pessoais")}
                   </h4>
                   <ul className="flex flex-wrap">
                   <ul className="list-none mt-6 mr-4">
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-purple-900 mr-3">
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
                             <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">
-                            Autodidatismo
+                          <h4 className={(isDarkTheme ? "text-white" : "text-gray-600")}>
+                            {(isEnglish ? "Self-learning" : "Autodidatismo")}
+                            
                           </h4>
                         </div>
                       </div>
@@ -152,13 +189,14 @@ export default function Main() {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-purple-900 mr-3">
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
                           <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">	
-                          Comunicação
+                          <h4 className={(isDarkTheme ? "text-white" : "text-gray-600")}>	
+                          {(isEnglish ? "Communication" : "Comunicação")}
+                          
                           </h4>
                         </div>
                       </div>
@@ -166,13 +204,13 @@ export default function Main() {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-purple-900 mr-3">
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
                             <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">
-                            Gestão de Tempo
+                          <h4 className={(isDarkTheme ? "text-white" : "text-gray-600")}>
+                          {(isEnglish ? "Time Management" : "Gestão de Tempo")}
                           </h4>
                         </div>
                       </div>
@@ -182,12 +220,13 @@ export default function Main() {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-purple-900 mr-3">
-                            <i className="far fa-circle-dot"></i>
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                            <i className="fa-brands fa-php"></i>
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">
+                          <h4 className={(isDarkTheme ? "text-white" : 
+                "text-gray-600")}>
                             PHP
                           </h4>
                         </div>
@@ -196,12 +235,13 @@ export default function Main() {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-purple-900 mr-3">
-                          <i className="far fa-circle-dot"></i>
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <i className="fa-brands fa-node-js"></i>
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">	
+                          <h4 className={(isDarkTheme ? "text-white" : 
+                "text-gray-600")}>	
                           NodeJS
                           </h4>
                         </div>
@@ -210,12 +250,13 @@ export default function Main() {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-purple-900 mr-3">
-                            <i className="far fa-circle-dot"></i>
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                            <i className="fa-brands fa-react"></i>
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">
+                          <h4 className={(isDarkTheme ? "text-white" : 
+                "text-gray-600")}>
                             ReactJS
                           </h4>
                         </div>
@@ -226,12 +267,13 @@ export default function Main() {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-purple-900 mr-3">
-                            <i className="far fa-circle-dot"></i>
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                            <i className="fa-brands fa-python"></i>
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">
+                          <h4 className={(isDarkTheme ? "text-white" : 
+                "text-gray-600")}>
                           Python
                           </h4>
                         </div>
@@ -240,12 +282,13 @@ export default function Main() {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-purple-900 mr-3">
-                          <i className="far fa-circle-dot"></i>
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <i className="far fa-chart-bar"></i>
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">	
+                          <h4 className={(isDarkTheme ? "text-white" : 
+                "text-gray-600")}>	
                           PowerBI
                           </h4>
                         </div>
@@ -254,12 +297,12 @@ export default function Main() {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-purple-900 mr-3">
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
                             <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">
+                          <h4 className={(isDarkTheme ? "text-white" : "text-gray-600")}>
                           English B1 By TOEIC
                           </h4>
                         </div>
@@ -273,185 +316,13 @@ export default function Main() {
           </div>
         </section>
 
-
-        <section className="pt-20 pb-48">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center text-center mb-24">
-              <div className="w-full lg:w-6/12 px-4">
-                <h2 className="text-4xl font-semibold">
-                  Here are our heroes
-                </h2>
-                <p className="text-lg leading-relaxed m-4 text-gray-600">
-                  According to the National Oceanic and Atmospheric
-                  Administration, Ted, Scambos, NSIDClead scentist, puts the
-                  potentially record maximum.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-wrap">
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                <div className="px-6">
-                  {/* <img
-                    alt="..."
-                    src={require("assets/img/team-1-800x800.jpg").default}
-                    className="shadow-lg rounded-full max-w-full mx-auto"
-                    style={{ maxWidth: "120px" }}
-                  /> */}
-                  <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">
-                      Ryan Tompson
-                    </h5>
-                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                      Web Developer
-                    </p>
-                    <div className="mt-6">
-                      <button
-                        className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-twitter"></i>
-                      </button>
-                      <button
-                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-facebook-f"></i>
-                      </button>
-                      <button
-                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-dribbble"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                <div className="px-6">
-                  {/* <img
-                    alt="..."
-                    src={require("assets/img/team-2-800x800.jpg").default}
-                    className="shadow-lg rounded-full max-w-full mx-auto"
-                    style={{ maxWidth: "120px" }}
-                  /> */}
-                  <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">
-                      Romina Hadid
-                    </h5>
-                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                      Marketing Specialist
-                    </p>
-                    <div className="mt-6">
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-google"></i>
-                      </button>
-                      <button
-                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-facebook-f"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                <div className="px-6">
-                  {/* <img
-                    alt="..."
-                    src={require("assets/img/team-3-800x800.jpg").default}
-                    className="shadow-lg rounded-full max-w-full mx-auto"
-                    style={{ maxWidth: "120px" }}
-                  /> */}
-                  <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">
-                      Alexa Smith
-                    </h5>
-                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                      UI/UX Designer
-                    </p>
-                    <div className="mt-6">
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-google"></i>
-                      </button>
-                      <button
-                        className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-twitter"></i>
-                      </button>
-                      <button
-                        className="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-instagram"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                <div className="px-6">
-                  {/* <img
-                    alt="..."
-                    src={require("assets/img/team-4-470x470.png").default}
-                    className="shadow-lg rounded-full max-w-full mx-auto"
-                    style={{ maxWidth: "120px" }}
-                  /> */}
-                  <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">
-                      Jenna Kardi
-                    </h5>
-                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                      Founder and CEO
-                    </p>
-                    <div className="mt-6">
-                      <button
-                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-dribbble"></i>
-                      </button>
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-google"></i>
-                      </button>
-                      <button
-                        className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-twitter"></i>
-                      </button>
-                      <button
-                        className="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-instagram"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="pb-20 relative block bg-gray-900">
+        <section className={(isDarkTheme ? "pb-20 relative block bg-sky-950" : "pb-20 relative block bg-sky-950")}>
           <div
-            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-            style={{ height: "80px" }}
+            className="top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+            style={{ height: "80px"}} 
           >
             <svg
-              className="absolute bottom-0 overflow-hidden"
+              className="absolute -bottom-4 overflow-hidden" 
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
               version="1.1"
@@ -460,137 +331,34 @@ export default function Main() {
               y="0"
             >
               <polygon
-                className="text-gray-900 fill-current"
+                className={(isDarkTheme ? "text-sky-950 fill-current" : "text-sky-950 fill-current")}
                 points="2560 0 2560 100 0 100"
               ></polygon>
             </svg>
           </div>
-
-          <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
-            <div className="flex flex-wrap text-center justify-center">
-              <div className="w-full lg:w-6/12 px-4">
-                <h2 className="text-4xl font-semibold text-white">
-                  Build something
-                </h2>
-                <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-                  Put the potentially record low maximum sea ice extent tihs year down to low ice.
-                  According to the National Oceanic and Atmospheric Administration, Ted, Scambos.
-                </p>
+          
+          <div className="container mx-auto px-4 lg:pt-24 lg:pb-12">
+              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                  <h1 className="text-white sm:pt-16 lg:pt-3 text-5xl body-font font-poppins">
+                    Portfolio
+                  </h1>
               </div>
-            </div>
-            <div className="flex flex-wrap mt-12 justify-center">
-              <div className="w-full lg:w-3/12 px-4 text-center">
-                <div className="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                  <i className="fas fa-medal text-xl"></i>
-                </div>
-                <h6 className="text-xl mt-5 font-semibold text-white">
-                  Excelent Services
-                </h6>
-                <p className="mt-2 mb-4 text-gray-500">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-              <div className="w-full lg:w-3/12 px-4 text-center">
-                <div className="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                  <i className="fas fa-poll text-xl"></i>
-                </div>
-                <h5 className="text-xl mt-5 font-semibold text-white">
-                  Grow your market
-                </h5>
-                <p className="mt-2 mb-4 text-gray-500">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-              <div className="w-full lg:w-3/12 px-4 text-center">
-                <div className="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                  <i className="fas fa-lightbulb text-xl"></i>
-                </div>
-                <h5 className="text-xl mt-5 font-semibold text-white">
-                  Launch time
-                </h5>
-                <p className="mt-2 mb-4 text-gray-500">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
+              <div className="mt-6 flex flex-wrap justify-center">          
+                <Repos isEnglish={isEnglish}/>
+              </div>  
           </div>
         </section>
-       
-        <section className="relative block py-24 lg:pt-0 bg-gray-900">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-              <div className="w-full lg:w-6/12 px-4">
-                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
-                  <div className="flex-auto p-5 lg:p-10">
-                    <h4 className="text-2xl font-semibold">
-                      Want to work with us?
-                    </h4>
-                    <p className="leading-relaxed mt-1 mb-4 text-gray-600">
-                      Complete this form and we will get back to you in 24 hours.
-                    </p>
-                    <div className="relative w-full mb-3 mt-8">
-                      <label
-                        className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                        htmlFor="full-name"
-                      >
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                        placeholder="Full Name"
-                        style={{ transition: "all .15s ease" }}
-                      />
-                    </div>
-
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                        htmlFor="email"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                        placeholder="Email"
-                        style={{ transition: "all .15s ease" }}
-                      />
-                    </div>
-
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                        htmlFor="message"
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        rows="4"
-                        cols="80"
-                        className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                        placeholder="Type a message..."
-                      />
-                    </div>
-                    <div className="text-center mt-6">
-                      <button
-                        className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                        style={{ transition: "all .15s ease" }}
-                      >
-                        Send Message
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Criar dois botões flutuantes para assim colocar darkmode e também mudar do Inglês para o Português e vice-versa */}
       </main>
+      <Footer isDarkTheme={isDarkTheme}/>
+      <button onClick={() => setIsDarkTheme(!isDarkTheme)} title="Dark Mode"
+        className="fixed z-90 top-36 left-10 bg-black hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
+        text-white text-4xl hover:bg-white hover:drop-shadow-2xl "><i className="fa-solid fa-circle-half-stroke" ></i>
+      </button>
+      <button onClick={() => setIsEnglish(!isEnglish)} title="English Mode"
+        className="fixed z-90 top-48 left-10 bg-white hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
+        text-white text-4xl hover:bg-white hover:drop-shadow-2xl ">{(isEnglish ? <span class="fi fi-br w-4 h-4"></span> : <span class="fi fi-us w-4 h-4"></span> )}
+      </button>
     </>
   );
 }

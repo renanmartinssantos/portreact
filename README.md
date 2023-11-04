@@ -1,3 +1,7 @@
+Before Run this project, dont forget to use:
+
+### `npm i`
+
 ## Available Scripts
 
 In the project directory, you can run:
