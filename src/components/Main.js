@@ -86,7 +86,8 @@ export default function Main(props) {
               y="0"
             >
               <polygon
-                className="text-white fill-current"
+                className={(isDarkTheme ? "text-black fill-current" : 
+                "text-white fill-current")}
                 points="2560 0 2560 100 0 100"
               ></polygon>
             </svg>
@@ -316,13 +317,13 @@ export default function Main(props) {
           </div>
         </section>
 
-        <section className={(isDarkTheme ? "pb-20 relative block bg-sky-950" : "pb-20 relative block bg-sky-950")}>
+        <section className={(isDarkTheme ? "pb-20 relative block bg-sky-950" : "pb-40 relative block bg-sky-950")}>
           <div
             className="top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
             style={{ height: "80px"}} 
           >
             <svg
-              className="absolute -bottom-4 overflow-hidden" 
+              className="absolute -bottom-1 overflow-hidden" 
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
               version="1.1"
@@ -337,7 +338,7 @@ export default function Main(props) {
             </svg>
           </div>
           
-          <div className="container mx-auto px-4 lg:pt-24 lg:pb-12">
+          <div className="container mx-auto px-4 pt-16 pb-12">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                   <h1 className="text-white sm:pt-16 lg:pt-3 text-5xl body-font font-poppins">
                     Portfolio
@@ -348,15 +349,14 @@ export default function Main(props) {
               </div>  
           </div>
         </section>
-        {/* Criar dois botões flutuantes para assim colocar darkmode e também mudar do Inglês para o Português e vice-versa */}
       </main>
       <Footer isDarkTheme={isDarkTheme}/>
       <button onClick={() => setIsDarkTheme(!isDarkTheme)} title="Dark Mode"
-        className="fixed z-90 top-36 left-10 bg-black hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
+        className="fixed z-90 top-28 left-5 bg-black hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
         text-white text-4xl hover:bg-white hover:drop-shadow-2xl "><i className="fa-solid fa-circle-half-stroke" ></i>
       </button>
       <button onClick={() => setIsEnglish(!isEnglish)} title="English Mode"
-        className="fixed z-90 top-48 left-10 bg-white hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
+        className="fixed z-90 top-40 left-5 bg-white hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
         text-white text-4xl hover:bg-white hover:drop-shadow-2xl ">{(isEnglish ? <span class="fi fi-br w-4 h-4"></span> : <span class="fi fi-us w-4 h-4"></span> )}
       </button>
     </>

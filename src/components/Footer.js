@@ -8,7 +8,7 @@ export default function Footer(prop) {
         style={{ height: "80px" }}
       >
         <svg
-          className="absolute bottom-0 overflow-hidden"
+          className="absolute -bottom-1 overflow-hidden"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
           version="1.1"
