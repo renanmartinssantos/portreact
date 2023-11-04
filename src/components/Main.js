@@ -132,14 +132,14 @@ export default function Main(props) {
               </div>
               <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
                 <div className="md:pr-12">
-                  <h3 className={(isDarkTheme ? "text-3xl font-semibold pt-10 text-white" : 
-                "text-3xl font-semibold pt-10")}>
+                  <h3 className={(isDarkTheme ? "text-3xl font-semibold pt-10 text-white font-poppins" : 
+                "text-3xl font-semibold pt-10 font-poppins")}>
                   {(isEnglish ? 
                       'A little about me' : 
                       'Um pouco sobre quem sou')}
                   </h3>
-                  <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400" : 
-                "mt-4 text-lg leading-relaxed text-gray-600")}>
+                  <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
+                "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
 
                   {(isEnglish ? "I'm a Fullstack Developer specialized in PHP, ReactJS. In transition to Data Analysis."+
                                 "I worked with development of applications for Excel, I developed parts of a room reservation system and did maintenance." : 
@@ -147,8 +147,8 @@ export default function Main(props) {
                                 "Trabalhei com desenvolvimento de aplicações para Excel, desenvolvi partes de um sistema de reserva de sala e fiz manutenções.")}
                  
                   </p>
-                  <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400" : 
-                "mt-4 text-lg leading-relaxed text-gray-600")}>
+                  <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
+                "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
 
                   {(isEnglish ? "After that, I kept refining and improving myself. Besides the companies I worked for, which provided me with guidance. " +
                                 "I freelanced for a while. It was during this time that I learned what it means to have a 'sense of ownership,' " + 
@@ -157,8 +157,8 @@ export default function Main(props) {
                                 "Aprendi nesse momento, o que é ter senso de dono, assim como, ter gestão de tempo.")}
                   
                   </p>
-                  <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400" : 
-                "mt-4 text-lg leading-relaxed text-gray-600")}>
+                  <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
+                "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
                   {(isEnglish ? "I actively participated during this time, in eSports teams, serving as a captain and managing people. " +
                                 "And here I am, renewing my knowledge, graduating in Data Science from Fatec Rubens Lara Baixada Santista "+
                                 "and transitioning to the field of data analysis." : 
@@ -166,8 +166,8 @@ export default function Main(props) {
                                 "E cá estou, renovando conhecimento, me graduando em Ciência de Dados pela Fatec Rubens Lara Baixada Santista "+
                                 "e migrando para área de análise de dados.")}  
                   </p>
-                  <h4 className={(isDarkTheme ? "text-2xl font-semibold mt-5 text-white" : 
-                "text-2xl font-semibold mt-5")}>
+                  <h4 className={(isDarkTheme ? "text-2xl font-semibold mt-5 text-white font-poppins" : 
+                "text-2xl font-semibold mt-5 font-poppins")}>
                   {(isEnglish ? "Some personal skills" : "Algumas habilidades pessoais")}
                   </h4>
                   <ul className="flex flex-wrap">
@@ -180,7 +180,7 @@ export default function Main(props) {
                           </span>
                         </div>
                         <div>
-                          <h4 className={(isDarkTheme ? "text-white" : "text-gray-600")}>
+                          <h4 className={(isDarkTheme ? "text-white font-poppins" : "text-gray-600 font-poppins")}>
                             {(isEnglish ? "Self-learning" : "Autodidatismo")}
                             
                           </h4>
@@ -195,7 +195,7 @@ export default function Main(props) {
                           </span>
                         </div>
                         <div>
-                          <h4 className={(isDarkTheme ? "text-white" : "text-gray-600")}>	
+                          <h4 className={(isDarkTheme ? "text-white font-poppins" : "text-gray-600 font-poppins")}>	
                           {(isEnglish ? "Communication" : "Comunicação")}
                           
                           </h4>
@@ -210,7 +210,7 @@ export default function Main(props) {
                           </span>
                         </div>
                         <div>
-                          <h4 className={(isDarkTheme ? "text-white" : "text-gray-600")}>
+                          <h4 className={(isDarkTheme ? "text-white font-poppins" : "text-gray-600 font-poppins")}>
                           {(isEnglish ? "Time Management" : "Gestão de Tempo")}
                           </h4>
                         </div>
@@ -226,8 +226,8 @@ export default function Main(props) {
                           </span>
                         </div>
                         <div>
-                          <h4 className={(isDarkTheme ? "text-white" : 
-                "text-gray-600")}>
+                          <h4 className={(isDarkTheme ? "text-white font-poppins" : 
+                "text-gray-600 font-poppins")}>
                             PHP
                           </h4>
                         </div>
@@ -241,8 +241,8 @@ export default function Main(props) {
                           </span>
                         </div>
                         <div>
-                          <h4 className={(isDarkTheme ? "text-white" : 
-                "text-gray-600")}>	
+                          <h4 className={(isDarkTheme ? "text-white font-poppins" : 
+                "text-gray-600 font-poppins")}>	
                           NodeJS
                           </h4>
                         </div>
@@ -256,8 +256,8 @@ export default function Main(props) {
                           </span>
                         </div>
                         <div>
-                          <h4 className={(isDarkTheme ? "text-white" : 
-                "text-gray-600")}>
+                          <h4 className={(isDarkTheme ? "text-white font-poppins" : 
+                "text-gray-600 font-poppins")}>
                             ReactJS
                           </h4>
                         </div>
@@ -288,8 +288,8 @@ export default function Main(props) {
                           </span>
                         </div>
                         <div>
-                          <h4 className={(isDarkTheme ? "text-white" : 
-                "text-gray-600")}>	
+                          <h4 className={(isDarkTheme ? "text-white font-poppins" : 
+                "text-gray-600 font-poppins")}>	
                           PowerBI
                           </h4>
                         </div>
@@ -303,7 +303,7 @@ export default function Main(props) {
                           </span>
                         </div>
                         <div>
-                          <h4 className={(isDarkTheme ? "text-white" : "text-gray-600")}>
+                          <h4 className={(isDarkTheme ? "text-white font-poppins" : "text-gray-600 font-poppins")}>
                           English B1 By TOEIC
                           </h4>
                         </div>

@@ -65,8 +65,8 @@ export default function Navbar(props) {
               <button
                 className={
                   (props.isDarkTheme
-                    ? "bg-white text-gray-800 active:bg-gray-100"
-                    : "bg-gray-100 text-gray-800 active:bg-gray-100") +
+                    ? "bg-white text-gray-800 active:bg-gray-100 font-poppins"
+                    : "bg-gray-100 text-gray-800 active:bg-gray-100 font-poppins") +
                   " text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
                 }
                 type="button"
@@ -81,8 +81,8 @@ export default function Navbar(props) {
               <button
                 className={
                   (props.isDarkTheme
-                    ? "bg-sky-900 text-white active:bg-gray-100"
-                    : "bg-sky-900 text-white active:bg-gray-100") +
+                    ? "bg-sky-900 text-white active:bg-gray-100 font-poppins"
+                    : "bg-sky-900 text-white active:bg-gray-100 font-poppins") +
                   " text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
                 }
                 type="button"
