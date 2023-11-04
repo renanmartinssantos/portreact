@@ -51,8 +51,8 @@ export default function Navbar(props) {
         </div>
         <div
           className={
-            "lg:flex flex-grow items-center bg-black lg:bg-transparent lg:shadow-none" +
-            (navbarOpen ? " block rounded shadow-lg" : " hidden")
+            (props.isDarkTheme ? " lg:flex flex-grow items-center bg-black lg:bg-transparent lg:shadow-none " : " lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none ") +
+            (navbarOpen ? " block rounded " : " hidden")
           }
           id="example-navbar-warning"
         >
