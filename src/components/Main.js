@@ -214,7 +214,7 @@ export default function Main(props) {
                   className="max-w-full rounded-lg shadow-lg"
                   src={(isPlatform  ? "https://images.unsplash.com/photo-1586796676789-f6fe8cc276f7?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" : "https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" )}
                 />
-                {(isSecret  ? "" : <button onClick={() => setIsPlatform(!isPlatform)} title={(isEnglish ? "this has a secret" : "Há um segredo")}
+                {(isSecret  ? "" : <button onClick={() => setIsPlatform(!isPlatform)} title={(isEnglish ? "This has a secret" : "Há um segredo")}
                   className="absolute z-90 -mt-12 ml-2 flex justify-center items-center
                   text-white text-4xl"><i class="fa-solid fa-feather-pointed"></i>
                 </button>)}
