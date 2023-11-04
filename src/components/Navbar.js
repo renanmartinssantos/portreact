@@ -31,7 +31,7 @@ export default function Navbar(props) {
           >
            <img
               alt="..."
-              src={"./assets/img/logo512.png"}
+              src={(props.isSecret ? "./assets/img/logoHarry.png" : "./assets/img/logo512.png")}
               className="rounded-md"
               style={{ maxWidth: "50px" }}
             />
@@ -80,15 +80,15 @@ export default function Navbar(props) {
               <a href="mailto:contato@renanmartins.pro">
               <button
                 className={
-                  (props.isDarkTheme
-                    ? "bg-sky-900 text-white active:bg-gray-100 font-poppins"
+                  (props.isSecret
+                    ? "bg-orange-400 text-white active:bg-gray-100 font-poppins"
                     : "bg-sky-900 text-white active:bg-gray-100 font-poppins") +
                   " text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
                 }
                 type="button"
                 style={{ transition: "all .15s ease" }}
               >
-                {(props.isEnglish ? "Let's Talk!" : "Vamos conversar!" )}
+                {(props.isEnglish ? "Let's Talk!" : "Vamos duelar!" )}
               </button>
               </a>
             </li>

@@ -5,36 +5,81 @@ import Footer from "./Footer";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export default function Main(props) {
-  
-  const [isDarkTheme, setIsDarkTheme] = React.useState(props.isDarkTheme);
+  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
   const [isEnglish, setIsEnglish] = React.useState(false);
   const [isSecret, setIsSecret] = React.useState(false);
+  const [isPlatform, setIsPlatform] = React.useState(false);
+  const [countClick, setCountClick] = React.useState(0);
+  const [isTextDefault, setTextDefault] = React.useState(false);
+  
+  function activateAllorNot(isDarkTheme){
+    console.log(isDarkTheme)
+    if(isDarkTheme === false){
+      setIsSecret(!isSecret)
+      setIsDarkTheme(!isDarkTheme)
+    }else{
+      setIsSecret(!isSecret)
+    }
+  }
+
+  function count(isDarkTheme, isPlatform){
+    if(isPlatform === true){
+      setCountClick(countClick + 1)
+
+      if(countClick === 2){
+        activateAllorNot(isDarkTheme)
+        setTextDefault(!isTextDefault)
+        window.scrollTo(0, 0)
+      }else if(countClick > 2){
+        setCountClick(0)
+        setIsSecret(false)
+        setIsDarkTheme(false)
+        setTextDefault(false)
+        setIsPlatform(false)
+      }
+    }
+  }
 
   return (
     <>
-      <Navbar isDarkTheme={isDarkTheme} isEnglish={isEnglish}/>
+      <Navbar isDarkTheme={isDarkTheme} isEnglish={isEnglish} isSecret={isSecret}/>
       <main>
         <section className="relative">
         <div className="pt-32 pb-32 flex content-center items-center justify-center border-none"
             style={{
               minHeight: "75vh"
             }}>
-          <div className="absolute top-0 w-full h-full bg-center bg-cover ">
+          <div className={(isSecret  ? "hidden " : "" ) + "absolute top-0 w-full h-full bg-center bg-cover"}>
+          
             <video
               autoPlay
               loop
               muted
               className="z-10 top-0 w-full h-full object-cover full"
             >
-              <source
-                src={(isSecret  ? "" : "./assets/video/bg-capa2.mp4" )}
+              <source className="hidden"
+                src="./assets/video/bg-capa2.mp4"
                 type="video/mp4"
               />
               Your browser does not support the video tag.
-            </video>
-            
+            </video>            
           </div>
+          <div className={(isSecret  ? "" : "hidden " ) + "absolute top-0 w-full h-full bg-center bg-cover"}>
           
+            <video
+                autoPlay
+                loop
+                muted
+                className="z-10 top-0 w-full h-full object-cover full"
+              >
+                <source
+                  src="./assets/wizards/huff.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+            </video>          
+          </div>
+
           <span id="blackOverlay" className={(isDarkTheme ? "w-full h-full  backdrop-brightness-50 absolute bg opacity-90 bg-neutral-900" : 
           "w-full h-full  backdrop-brightness-50 absolute bg opacity-90 bg-white")}></span>
           <div className="container relative mx-auto">
@@ -49,21 +94,28 @@ export default function Main(props) {
                         <div className="relative">
                             <img
                               alt="..."
-                              src={(isSecret  ? "" : "./assets/img/profile.png" )}
-                              className={(isSecret  ? "" : "outline-sky-900 " ) + 
+                              src={(isSecret  ? "./assets/wizards/portrait.png" : "./assets/img/profile.png" )}
+                              className={(isSecret  ? "outline-orange-400 " : "outline-sky-900 " ) + 
                               "shadow-xl  rounded-full h-auto align-middle outline-2 outline border-none absolute -m-16 -ml-32 lg:-ml-26"}
                               style={{ maxWidth: "250px" }}
                             />
                         </div>
                     </div>
-                    <div className="badge bg-sky-900 text-white"><div className="text-uppercase">{(isSecret  ? "" : "Fullstack Developer \u2022 Data Analyst" )}</div></div>
+                    <div className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "badge text-white"}><div className="text-uppercase">{(isSecret  ? "Aluno de Hogwarts \u2022 Artista" : "Fullstack Developer \u2022 Data Analyst" )}</div></div>
 
                     <div className="w-full px-1 lg:order-2 flex justify-center mt-6 text-center ">
                       <p className={(isDarkTheme ? "text-sm text-white body-font font-poppins" : 
                                                   "text-sm text-black body-font font-poppins")} style={{ maxWidth: "450px" }}>
-                      {(isEnglish ? 
+                      {(isSecret  ? 
+                      "Olá, sou Renan, um orgulhoso membro da Casa Huffpuffle em Hogwarts. Tenho usado " +
+                      "minhas habilidades mágicas para desenvolver soluções encantadoras para a Web, Mobile e " +
+                      "Desktop. Contudo, recentemente, decidi me aventurar em uma nova área da magia, a " +
+                      "Ciência de Dados. Estou ansioso para explorar esse campo mágico e descobrir como posso " +
+                      "aplicar meus conhecimentos para criar feitiços de dados incríveis!" : 
+                      (isEnglish ? 
                       "Hi, I'm Renan. I develop solutions for Web, Mobile and Desktop. Currently, I am transitioning my career to the area of Data Science." : 
-                      'Olá, eu sou Renan. Desenvolvo soluções para Web, Mobile e Desktop. Atualmente, estou em transição de carreira para a área de Ciência de Dados.')}
+                      'Olá, eu sou Renan. Desenvolvo soluções para Web, Mobile e Desktop. Atualmente, estou em transição de carreira para a área de Ciência de Dados.') )}                              
+
                       </p>
                     </div>
                     <div className="mt-6">
@@ -129,55 +181,82 @@ export default function Main(props) {
                 <img
                   alt="..."
                   className="max-w-full rounded-lg shadow-lg"
-                  src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                  src={(isPlatform  ? "https://images.unsplash.com/photo-1586796676789-f6fe8cc276f7?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" : "https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" )}
                 />
+                {(isSecret  ? "" : <button onClick={() => setIsPlatform(!isPlatform)} title="Platform Mode"
+                  className="absolute z-90 -mt-12 ml-2 flex justify-center items-center
+                  text-white text-4xl"><i class="fa-solid fa-feather-pointed"></i>
+                </button>)}
+                
               </div>
               <div className="w-full lg:w-5/12 ml-auto mr-auto px-4">
                 <div className="md:pr-12">
                   <h3 className={(isDarkTheme ? "text-3xl font-semibold pt-10 text-white font-poppins" : 
                 "text-3xl font-semibold pt-10 font-poppins")}>
-                  {(isEnglish ? 
+                  {(isSecret  ? 
+                      (isEnglish ? 
+                      'King’s Cross.' : 
+                      'King’s Cross.') : 
+                      (isEnglish ? 
                       'A little about me' : 
-                      'Um pouco sobre quem sou')}
+                      'Um pouco sobre quem sou'))}
+
                   </h3>
                   <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
                 "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
-
-                  {(isEnglish ? "I'm a Fullstack Developer specialized in PHP, ReactJS. In transition to Data Analysis."+
+                  {(isSecret  ? 
+                  (isEnglish ?  "Desesperado, Harry perguntou pelo trem que partia às onze horas, mas o" +
+                                "guarda disse que não havia nenhum. Ao fim, o guarda se afastou, resmungando contra pessoas" +
+                                "que o faziam perder tempo." : 
+                                "Desperate, Harry asked about the train that left at eleven o'clock, but " +
+                                "the guard said there was none. In the end, the guard walked away" +
+                                ", grumbling about people who made him waste time.") :
+                  (isEnglish ? "I'm a Fullstack Developer specialized in PHP, ReactJS. In transition to Data Analysis."+
                                 "I worked with development of applications for Excel, I developed parts of a room reservation system and did maintenance." : 
                                 "Sou Fullstack Developer especializado em PHP, ReactJS. Em transição para Análise de Dados." +
-                                "Trabalhei com desenvolvimento de aplicações para Excel, desenvolvi partes de um sistema de reserva de sala e fiz manutenções.")}
+                                "Trabalhei com desenvolvimento de aplicações para Excel, desenvolvi partes de um sistema de reserva de sala e fiz manutenções."))}          
+
                  
                   </p>
                   <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
                 "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
-
-                  {(isEnglish ? "After that, I kept refining and improving myself. Besides the companies I worked for, which provided me with guidance. " +
+                  {(isSecret  ? 
+                  (isEnglish ?  "Harry was lost in the middle of the station with a suitcase he could barely lift, his wizard " +
+                                "money-filled pocket, and a big owl." : 
+                                "Estava perdido no meio da estação com uma mala que mal podia levantar, o bolso cheio de dinheiro" +
+                                "de bruxo e uma corujona.") :
+                  (isEnglish ? "After that, I kept refining and improving myself. Besides the companies I worked for, which provided me with guidance. " +
                                 "I freelanced for a while. It was during this time that I learned what it means to have a 'sense of ownership,' " + 
                                 "as well as the importance of time management. " : 
                                 "Após isso, fui me aprimorando e melhorando. Além das empresas que passei e que me deram direcionamento, por um tempo, fui freelancer. " +
-                                "Aprendi nesse momento, o que é ter senso de dono, assim como, ter gestão de tempo.")}
+                                "Aprendi nesse momento, o que é ter senso de dono, assim como, ter gestão de tempo."))}
                   
                   </p>
                   <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
                 "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
-                  {(isEnglish ? "I actively participated during this time, in eSports teams, serving as a captain and managing people. " +
+                  {(isSecret  ? 
+                  (isEnglish ?  "5972" : 
+                                "5972") :
+                  (isEnglish ? "I actively participated during this time, in eSports teams, serving as a captain and managing people. " +
                                 "And here I am, renewing my knowledge, graduating in Data Science from Fatec Rubens Lara Baixada Santista "+
                                 "and transitioning to the field of data analysis." : 
                                 "Participei ativamente durante esse tempo, em equipes de eSports, atuando como capitão e gerenciando pessoas. " +
                                 "E cá estou, renovando conhecimento, me graduando em Ciência de Dados pela Fatec Rubens Lara Baixada Santista "+
-                                "e migrando para área de análise de dados.")}  
+                                "e migrando para área de análise de dados."))}  
                   </p>
                   <h4 className={(isDarkTheme ? "text-2xl font-semibold mt-5 text-white font-poppins" : 
                 "text-2xl font-semibold mt-5 font-poppins")}>
-                  {(isEnglish ? "Some personal skills" : "Algumas habilidades pessoais")}
+                  {(isSecret  ? 
+                  (isEnglish ?  "Think you'are being funny, do ya?" : 
+                                "Você se acha engraçado?") :
+                  (isEnglish ? "Some personal skills" : "Algumas habilidades pessoais"))}
                   </h4>
                   <ul className="flex flex-wrap">
                   <ul className="list-none mt-6 mr-4">
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                             <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
@@ -192,7 +271,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                           <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
@@ -207,7 +286,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                             <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
@@ -223,7 +302,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                             <i className="fa-brands fa-php"></i>
                           </span>
                         </div>
@@ -238,7 +317,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                           <i className="fa-brands fa-node-js"></i>
                           </span>
                         </div>
@@ -253,7 +332,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                             <i className="fa-brands fa-react"></i>
                           </span>
                         </div>
@@ -270,7 +349,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                             <i className="fa-brands fa-python"></i>
                           </span>
                         </div>
@@ -285,7 +364,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                           <i className="far fa-chart-bar"></i>
                           </span>
                         </div>
@@ -300,13 +379,17 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3">
+                        <button onClick={() => count(isDarkTheme, isPlatform)} title="Secret Mode"
+                          className="">
+                        
+                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                             <i className="far fa-circle-dot"></i>
                           </span>
+                          </button>
                         </div>
                         <div>
                           <h4 className={(isDarkTheme ? "text-white font-poppins" : "text-gray-600 font-poppins")}>
-                          English B1 By TOEIC
+                          {(isTextDefault ? "Plataforma 9 3/4" : "English B1 By TOEIC")}
                           </h4>
                         </div>
                       </div>
@@ -319,7 +402,7 @@ export default function Main(props) {
           </div>
         </section>
 
-        <section className={(isDarkTheme ? "pb-20 relative block bg-sky-950" : "pb-40 relative block bg-sky-950")}>
+        <section className={(isSecret  ? "bg-orange-500 " : "bg-sky-900 " ) + "pb-20 relative block"}>
           <div
             className="top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
             style={{ height: "80px"}} 
@@ -334,7 +417,7 @@ export default function Main(props) {
               y="0"
             >
               <polygon
-                className={(isDarkTheme ? "text-sky-950 fill-current" : "text-sky-950 fill-current")}
+                className={(isSecret  ? "text-orange-500 " : "text-sky-900 " ) + "fill-current"}
                 points="2560 0 2560 100 0 100"
               ></polygon>
             </svg>
@@ -343,16 +426,16 @@ export default function Main(props) {
           <div className="container mx-auto px-4 pt-16 pb-12">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                   <h1 className="text-white sm:pt-16 lg:pt-3 text-5xl body-font font-poppins">
-                    Portfolio
+                  {(isSecret  ? (isEnglish ? "My Story" : "Minha História") : "Portfolio" )}
                   </h1>
               </div>
               <div className="mt-6 flex flex-wrap justify-center">          
-                <Repos isEnglish={isEnglish}/>
+                <Repos isEnglish={isEnglish} isSecret={isSecret}/>
               </div>  
           </div>
         </section>
       </main>
-      <Footer isDarkTheme={isDarkTheme}/>
+      <Footer isDarkTheme={isDarkTheme} isSecret={isSecret}/>
       <button onClick={() => setIsDarkTheme(!isDarkTheme)} title="Dark Mode"
         className="fixed z-90 top-28 left-5 bg-black hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
         text-white text-4xl hover:bg-white hover:drop-shadow-2xl "><i className="fa-solid fa-circle-half-stroke" ></i>
