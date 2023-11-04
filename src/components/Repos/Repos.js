@@ -27,18 +27,18 @@ export default function Repos(props) {
 
     var harryList = [
         {
-            image: '/assets/wizards/acceptanceletter.png',
+            image: '/assets/wizards/acceptanceletterr.png',
             title: 'Quando fui chamado',
             descriptionBR: 'A sensação de abrir a carta e deparar com o brasão de Hogwarts, o convite para ingressar em uma escola de magia, e a oportunidade de vivenciar um mundo completamente diferente e encantador, seriam emocionantes.',
             descriptionUS: 'The feeling of opening the letter and coming across the Hogwarts crest, the invitation to join a school of magic, and the opportunity to experience a completely different and enchanting world would be exciting.',
-            link: ''
+            link: '/assets/wizards/acceptanceletterr.png'
         },
         {
             image: '/assets/wizards/setbooks.jpg',
             title: 'Minha primeira compra',
             descriptionBR: 'Receber a lista de compras de Hogwarts é algo realmente emocionante. No início, eu fiquei surpreso e até um pouco confuso. No entanto, a ideia de que estou prestes a entrar em um mundo repleto de magia e mistérios é absolutamente fascinante.',
             descriptionUS: "Receiving the Hogwarts shopping list is truly exciting. At first, I was surprised and even a bit confused. However, the idea that I'm about to enter a world full of magic and mysteries is absolutely fascinating.",
-            link: ''
+            link: '/assets/wizards/setbooks.jpg'
         },
         {
             image: '/assets/wizards/brickwall.jpg',

@@ -58,7 +58,7 @@ export default function Main(props) {
               className="z-10 top-0 w-full h-full object-cover full"
             >
               <source className="hidden"
-                src="./assets/video/bg-capa2.mp4"
+                src="./assets/video/bg-capa.mp4"
                 type="video/mp4"
               />
               Your browser does not support the video tag.
@@ -95,13 +95,13 @@ export default function Main(props) {
                             <img
                               alt="..."
                               src={(isSecret  ? "./assets/wizards/portrait.png" : "./assets/img/profile.png" )}
-                              className={(isSecret  ? "outline-orange-400 " : "outline-sky-900 " ) + 
+                              className={(isSecret  ? "outline-orange-500 " : "outline-sky-900 " ) + 
                               "shadow-xl  rounded-full h-auto align-middle outline-2 outline border-none absolute -m-16 -ml-32 lg:-ml-26"}
                               style={{ maxWidth: "250px" }}
                             />
                         </div>
                     </div>
-                    <div className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "badge text-white"}><div className="text-uppercase">{(isSecret  ? "Aluno de Hogwarts \u2022 Artista" : "Fullstack Developer \u2022 Data Analyst" )}</div></div>
+                    <div className={(isSecret  ? "bg-orange-500 " : "bg-sky-900 " ) + "badge text-white"}><div className="text-uppercase">{(isSecret  ? "Aluno de Hogwarts \u2022 Artista" : "Fullstack Developer \u2022 Data Analyst" )}</div></div>
 
                     <div className="w-full px-1 lg:order-2 flex justify-center mt-6 text-center ">
                       <p className={(isDarkTheme ? "text-sm text-white body-font font-poppins" : 
@@ -118,11 +118,42 @@ export default function Main(props) {
 
                       </p>
                     </div>
-                    <div className="mt-6">
-                      <a href="https://medium.com/@renanmartinssantos" target="_blank"><i className="fab fa-medium text-blue-400 bg-white text-lightBlue-400 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"></i></a>
-                      <a href="https://www.linkedin.com/in/renanmartinssantos/"  target="_blank"><i className="fab fa-linkedin text-blue-600 bg-white text-lightBlue-600 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"></i></a>
-                      <a href="https://github.com/renanmartinssantos" target="_blank"><i className="fab fa-github bg-white text-blueGray-800 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"></i></a>
-                    </div>
+                    {(isSecret  ?
+                      <div className="mt-12 flex justify-center">
+                        <div>
+                        <button onClick={() => setIsEnglish(!isEnglish)} title="Hufflepuff"
+                          className="w-14 h-14 bg-orange-500 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-10 inline-block text-center ">
+                        <img src={"/assets/wizards/hufflepuff.svg"} alt="Hufflepuff" className="absolute -ml-3 -mt-7 w-14 h-14"/>
+                        </button>
+                        <p className="-ml-10 text-white">{(isEnglish  ? "House" : "Casa")}</p>
+                        <p className="-ml-10 text-white">{(isEnglish  ? "Hufflepuff" : "Lufa-Lufa")}</p>
+                        </div>
+
+                        <div>
+                        <button onClick={() => setIsEnglish(!isEnglish)} title="Siberian Cat"
+                          className="w-14 h-14 bg-orange-500 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-10 inline-block text-center ">
+                        <img src={"/assets/wizards/siberian.webp"} alt="Siberian Cat" className="absolute -ml-14 -mt-16 w-32 h-32"/>
+                        </button>
+                        <p className="-ml-10 text-white">{(isEnglish  ? "Patronus" : "Patrono")}</p>
+                        <p className="-ml-10 text-white">{(isEnglish  ? "Siberian Cat" : "Gato Siberiano")}</p>
+                        </div>
+
+                        <div>
+                        <button onClick={() => setIsEnglish(!isEnglish)} title="Aspen Wand"
+                          className="w-14 h-14 bg-orange-500 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none inline-block text-center ">
+                        <img src={"/assets/wizards/wand.webp"} alt="Wand" className="absolute -ml-4 -mt-8 w-16 h-16" />
+                        </button>
+                        <p className="text-white">{(isEnglish  ? "Wand" : "Varinha")}</p>
+                        <p className="text-white">Aspen</p>
+                        </div>
+                      </div> :
+
+                      <div className="mt-6">
+                        <a href="https://medium.com/@renanmartinssantos" target="_blank"><i className="fab fa-medium text-blue-400 bg-white text-lightBlue-400 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"></i></a>
+                        <a href="https://www.linkedin.com/in/renanmartinssantos/"  target="_blank"><i className="fab fa-linkedin text-blue-600 bg-white text-lightBlue-600 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"></i></a>
+                        <a href="https://github.com/renanmartinssantos" target="_blank"><i className="fab fa-github bg-white text-blueGray-800 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"></i></a>
+                      </div>
+                    )}
                 </div>
               </div>
           </div>
@@ -183,7 +214,7 @@ export default function Main(props) {
                   className="max-w-full rounded-lg shadow-lg"
                   src={(isPlatform  ? "https://images.unsplash.com/photo-1586796676789-f6fe8cc276f7?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" : "https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" )}
                 />
-                {(isSecret  ? "" : <button onClick={() => setIsPlatform(!isPlatform)} title="Platform Mode"
+                {(isSecret  ? "" : <button onClick={() => setIsPlatform(!isPlatform)} title={(isEnglish ? "this has a secret" : "Há um segredo")}
                   className="absolute z-90 -mt-12 ml-2 flex justify-center items-center
                   text-white text-4xl"><i class="fa-solid fa-feather-pointed"></i>
                 </button>)}
@@ -379,7 +410,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                        <button onClick={() => count(isDarkTheme, isPlatform)} title="Secret Mode"
+                        <button onClick={() => count(isDarkTheme, isPlatform)} title={(isPlatform ? (isSecret ? "P.9 3/4" : "P.9 #/4") : "")}
                           className="">
                         
                           <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
@@ -389,7 +420,7 @@ export default function Main(props) {
                         </div>
                         <div>
                           <h4 className={(isDarkTheme ? "text-white font-poppins" : "text-gray-600 font-poppins")}>
-                          {(isTextDefault ? "Plataforma 9 3/4" : "English B1 By TOEIC")}
+                          {(isTextDefault ? (isEnglish ? "Platform 9 3/4" : "Plataforma 9 3/4") : "English B1 By TOEIC")}
                           </h4>
                         </div>
                       </div>
