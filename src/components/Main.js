@@ -123,14 +123,14 @@ export default function Main(props) {
 
           <div className="container mx-auto px-4">
             <div className="items-center flex flex-wrap">
-              <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
+              <div className="w-full lg:w-4/12 ml-auto mr-auto px-4">
                 <img
                   alt="..."
                   className="max-w-full rounded-lg shadow-lg"
                   src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
                 />
               </div>
-              <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
+              <div className="w-full lg:w-5/12 ml-auto mr-auto px-4">
                 <div className="md:pr-12">
                   <h3 className={(isDarkTheme ? "text-3xl font-semibold pt-10 text-white font-poppins" : 
                 "text-3xl font-semibold pt-10 font-poppins")}>
