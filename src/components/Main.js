@@ -11,6 +11,66 @@ export default function Main(props) {
   const [isPlatform, setIsPlatform] = React.useState(false);
   const [countClick, setCountClick] = React.useState(0);
   const [isTextDefault, setTextDefault] = React.useState(false);
+
+  const [countFive, setCountFive] = React.useState(0);
+  const [countNine, setCountNine] = React.useState(0);
+  const [countSeven, setCountSeven] = React.useState(0);
+  const [countTwo, setCountTwo] = React.useState(0);
+
+  const countF = (isF, isSecret) => {
+    console.log("Libere o Cadeado: ")
+    if(isSecret === true){
+      
+      if(countFive > 5){
+        setCountFive(0)
+      }
+      setCountFive(countFive => countFive + 1)
+    }
+    resultCount()
+  }
+
+  const countN = (isN, isSecret) => {
+    console.log("Libere o Cadeado: ")
+    if(isSecret === true){
+      if(countNine > 9){
+        setCountNine(0)
+      }
+      setCountNine(countNine => countNine + 1)
+      console.log(countNine)
+    }
+    resultCount()
+  }
+
+  const countS = (isS, isSecret) => {
+    console.log("Libere o Cadeado: ")
+    if(isSecret === true){
+      if(countSeven > 7){
+        setCountSeven(0)
+      }
+      setCountSeven(countSeven => countSeven + 1)
+      console.log(countSeven)
+    }
+    resultCount()
+  }
+
+  const countT = (isT, isSecret) => {
+    console.log("Libere o Cadeado: ")
+    if(isSecret === true){
+      if(countTwo > 2){
+        setCountTwo(0)
+      }
+      setCountTwo(countTwo => countTwo + 1)
+      console.log(countTwo)
+    }
+    resultCount()
+  }
+
+  function resultCount(){
+    console.log(countFive, countNine, countSeven, countTwo)
+    if(countFive === 5 && countNine === 9 && countSeven === 7 && countTwo === 2){
+      console.log("In love with someone from Slytherin")
+    }
+  }
   
   function activateAllorNot(isDarkTheme){
     console.log(isDarkTheme)
@@ -101,7 +161,7 @@ export default function Main(props) {
                             />
                         </div>
                     </div>
-                    <div className={(isSecret  ? "bg-orange-500 " : "bg-sky-900 " ) + "badge text-white"}><div className="text-uppercase">{(isSecret  ? "Aluno de Hogwarts \u2022 Artista" : "Fullstack Developer \u2022 Data Analyst" )}</div></div>
+                    <div className={(isSecret  ? "bg-orange-500 " : "bg-sky-900 " ) + "badge text-white"}><div className="text-uppercase">{(isSecret  ? "Aluno de Hogwarts \u2022 Duelist" : "Fullstack Developer \u2022 Data Analyst" )}</div></div>
 
                     <div className="w-full px-1 lg:order-2 flex justify-center mt-6 text-center ">
                       <p className={(isDarkTheme ? "text-sm text-white body-font font-poppins" : 
@@ -125,7 +185,7 @@ export default function Main(props) {
                           className="w-14 h-14 bg-orange-500 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-10 inline-block text-center ">
                         <img src={"/assets/wizards/hufflepuff.svg"} alt="Hufflepuff" className="absolute -ml-3 -mt-7 w-14 h-14"/>
                         </button>
-                        <p className="-ml-10 text-white">{(isEnglish  ? "House" : "Casa")}</p>
+                        <p className="-ml-10 mt-3 text-white">{(isEnglish  ? "House" : "Casa")}</p>
                         <p className="-ml-10 text-white">{(isEnglish  ? "Hufflepuff" : "Lufa-Lufa")}</p>
                         </div>
 
@@ -134,7 +194,7 @@ export default function Main(props) {
                           className="w-14 h-14 bg-orange-500 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-10 inline-block text-center ">
                         <img src={"/assets/wizards/siberian.webp"} alt="Siberian Cat" className="absolute -ml-14 -mt-16 w-32 h-32"/>
                         </button>
-                        <p className="-ml-10 text-white">{(isEnglish  ? "Patronus" : "Patrono")}</p>
+                        <p className="-ml-10 mt-3 text-white">{(isEnglish  ? "Patronus" : "Patrono")}</p>
                         <p className="-ml-10 text-white">{(isEnglish  ? "Siberian Cat" : "Gato Siberiano")}</p>
                         </div>
 
@@ -143,7 +203,7 @@ export default function Main(props) {
                           className="w-14 h-14 bg-orange-500 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none inline-block text-center ">
                         <img src={"/assets/wizards/wand.webp"} alt="Wand" className="absolute -ml-4 -mt-8 w-16 h-16" />
                         </button>
-                        <p className="text-white">{(isEnglish  ? "Wand" : "Varinha")}</p>
+                        <p className="mt-3 text-white">{(isEnglish  ? "Wand" : "Varinha")}</p>
                         <p className="text-white">Aspen</p>
                         </div>
                       </div> :
@@ -216,7 +276,7 @@ export default function Main(props) {
                 />
                 {(isSecret  ? "" : <button onClick={() => setIsPlatform(!isPlatform)} title={(isEnglish ? "This has a secret" : "Há um segredo")}
                   className="absolute z-90 -mt-12 ml-2 flex justify-center items-center
-                  text-white text-4xl"><i class="fa-solid fa-feather-pointed"></i>
+                  text-white text-4xl"><i className="fa-solid fa-feather-pointed"></i>
                 </button>)}
                 
               </div>
@@ -236,12 +296,13 @@ export default function Main(props) {
                   <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
                 "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
                   {(isSecret  ? 
-                  (isEnglish ?  "Desesperado, Harry perguntou pelo trem que partia às onze horas, mas o" +
-                                "guarda disse que não havia nenhum. Ao fim, o guarda se afastou, resmungando contra pessoas" +
-                                "que o faziam perder tempo." : 
-                                "Desperate, Harry asked about the train that left at eleven o'clock, but " +
+                  (isEnglish ?  "Desperate, Harry asked about the train that left at eleven o'clock, but " +
                                 "the guard said there was none. In the end, the guard walked away" +
-                                ", grumbling about people who made him waste time.") :
+                                ", grumbling about people who made him waste time." : 
+                                "Desesperado, Harry perguntou pelo trem que partia às onze horas, mas o" +
+                                "guarda disse que não havia nenhum. Ao fim, o guarda se afastou, resmungando contra pessoas" +
+                                "que o faziam perder tempo."
+                                ) :
                   (isEnglish ? "I'm a Fullstack Developer specialized in PHP, ReactJS. In transition to Data Analysis."+
                                 "I worked with development of applications for Excel, I developed parts of a room reservation system and did maintenance." : 
                                 "Sou Fullstack Developer especializado em PHP, ReactJS. Em transição para Análise de Dados." +
@@ -287,7 +348,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
+                          <span onClick={() => countF("Five", isSecret)} className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                             <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
@@ -302,7 +363,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
+                          <span onClick={() => countN("Nine", isSecret)} className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                           <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
@@ -317,7 +378,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
+                          <span onClick={() => countS("Seven", isSecret)} className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                             <i className="far fa-circle-dot"></i>
                           </span>
                         </div>
@@ -333,7 +394,7 @@ export default function Main(props) {
                     <li className="py-2">
                       <div className="flex items-center">
                         <div>
-                          <span className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
+                          <span onClick={() => countT("Two", isSecret)} className={(isSecret  ? "bg-orange-400 " : "bg-sky-900 " ) + "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-50 bg-sky-900 mr-3"}>
                             <i className="fa-brands fa-php"></i>
                           </span>
                         </div>
@@ -473,7 +534,7 @@ export default function Main(props) {
       </button>
       <button onClick={() => setIsEnglish(!isEnglish)} title="English Mode"
         className="fixed z-90 top-40 left-5 bg-white hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
-        text-white text-4xl hover:bg-white hover:drop-shadow-2xl ">{(isEnglish ? <span class="fi fi-br w-4 h-4"></span> : <span class="fi fi-us w-4 h-4"></span> )}
+        text-white text-4xl hover:bg-white hover:drop-shadow-2xl ">{(isEnglish ? <span className="fi fi-br w-4 h-4"></span> : <span className="fi fi-us w-4 h-4"></span> )}
       </button>
     </>
   );

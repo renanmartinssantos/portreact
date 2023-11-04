@@ -68,7 +68,7 @@ export default function Repos(props) {
                      : <a href={repo.link} target="_blank" className="font-poppins inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-sky-950 rounded-lg hover:bg-sky-900 focus:ring-4 focus:outline-none focus:ring-blue-300">
                      {props.isEnglish ? "Find out more" : "Saiba mais" }
                          <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                          </svg>
                      </a> )}
                 </div>
