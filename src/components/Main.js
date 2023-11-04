@@ -153,7 +153,7 @@ export default function Main(props) {
                                 "I freelanced for a while. It was during this time that I learned what it means to have a 'sense of ownership,' " + 
                                 "as well as the importance of time management. " : 
                                 "Após isso, fui me aprimorando e melhorando. Além das empresas que passei e que me deram direcionamento, por um tempo, fui freelancer. " +
-                                "Aprendi nesse momento, o que é ter <b>senso de dono</b>, assim como, ter gestão de tempo.")}
+                                "Aprendi nesse momento, o que é ter senso de dono, assim como, ter gestão de tempo.")}
                   
                   </p>
                   <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400" : 
