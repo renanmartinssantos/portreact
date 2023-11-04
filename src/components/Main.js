@@ -8,6 +8,7 @@ export default function Main(props) {
   
   const [isDarkTheme, setIsDarkTheme] = React.useState(props.isDarkTheme);
   const [isEnglish, setIsEnglish] = React.useState(false);
+  const [isSecret, setIsSecret] = React.useState(false);
 
   return (
     <>
@@ -26,7 +27,7 @@ export default function Main(props) {
               className="z-10 top-0 w-full h-full object-cover full"
             >
               <source
-                src="./assets/video/bg-capa2.mp4"
+                src={(isSecret  ? "" : "./assets/video/bg-capa2.mp4" )}
                 type="video/mp4"
               />
               Your browser does not support the video tag.
@@ -48,13 +49,14 @@ export default function Main(props) {
                         <div className="relative">
                             <img
                               alt="..."
-                              src={"./assets/img/profile.png"}
-                              className="shadow-xl  rounded-full h-auto align-middle outline-2 outline outline-sky-900 border-none absolute -m-16 -ml-32 lg:-ml-26"
+                              src={(isSecret  ? "" : "./assets/img/profile.png" )}
+                              className={(isSecret  ? "" : "outline-sky-900 " ) + 
+                              "shadow-xl  rounded-full h-auto align-middle outline-2 outline border-none absolute -m-16 -ml-32 lg:-ml-26"}
                               style={{ maxWidth: "250px" }}
                             />
                         </div>
                     </div>
-                    <div className="badge bg-sky-900 text-white"><div className="text-uppercase">Fullstack Developer &middot; Data Analyst</div></div>
+                    <div className="badge bg-sky-900 text-white"><div className="text-uppercase">{(isSecret  ? "" : "Fullstack Developer \u2022 Data Analyst" )}</div></div>
 
                     <div className="w-full px-1 lg:order-2 flex justify-center mt-6 text-center ">
                       <p className={(isDarkTheme ? "text-sm text-white body-font font-poppins" : 
