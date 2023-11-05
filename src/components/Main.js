@@ -551,10 +551,6 @@ export default function Main(props) {
         className="fixed z-90 top-40 left-5 bg-white hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
         text-white text-4xl hover:bg-white hover:drop-shadow-2xl ">{(isEnglish ? <span className="fi fi-br w-4 h-4"></span> : <span className="fi fi-us w-4 h-4"></span> )}
       </button>
-      {/* create a popup animated that just show when isSecretRevelead is true */}
-      <div className="relative shadow-lg text-white bg-black shadow-lg flex flex-wrap items-center justify-between px-2 py-3">
-          <div className="absolute shadow-xl top-1/2 left-1/2V -translate-x-1/2 -translate-y rounded-lg rounded-t-none"><i className="fa-solid fa-circle-half-stroke"></i></div>
-      </div>
       {isSecretRevealed && (
         <div className="popup justify-center items-center object-center text-center">
             <div className="">
