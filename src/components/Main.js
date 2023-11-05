@@ -108,6 +108,25 @@ export default function Main(props) {
     }
   }
 
+  const portugueseFrases = {
+    fraseHarry1: "Desesperado, Harry perguntou pelo trem que partia às onze horas, mas o guarda disse que não havia nenhum. Ao fim, o guarda se afastou, resmungando contra pessoas que o faziam perder tempo. ",
+    fraseHarry2: "Estava perdido no meio da estação com uma mala que mal podia levantar, o bolso cheio de dinheiro de bruxo e uma corujona. ",
+    fraseHarry3: "5972",
+    frase1: "Sou Full Stack Developer especializado em PHP, ReactJS, NodeJS. Em transição para Análise de Dados. Trabalhei com desenvolvimento de aplicações para Excel, desenvolvi partes de sistemas, manutenções, reuniões para saber a dor do cliente e suas implementações, desenvolvi lojas em wordpress, api's, bots, etc. ",
+    frase2: "Além das empresas que passei e que me deram direcionamento, fui freelancer. Aprendi nesse momento, o que é ter senso de dono, assim como, ter gestão de tempo. ",
+    frase3: "Participei ativamente durante esse tempo, em equipes de eSports, atuando como capitão e gerenciando pessoas. E cá estou, renovando conhecimento, me graduando em Ciência de Dados pela Fatec Rubens Lara Baixada Santista e migrando para a área de análise de dados. ",
+  };
+
+  const englishFrases = {
+    fraseHarry1: "Desperate, Harry asked about the train that left at eleven o'clock, but the guard said there was none. In the end, the guard walked away, grumbling about people who made him waste time. ",
+    fraseHarry2: "Harry was lost in the middle of the station with a suitcase he could barely lift, his wizard money-filled pocket, and a big owl. ",
+    fraseHarry3: "5972",
+    frase1: "I'm a Fullstack Developer specialized in PHP, ReactJS. In transition to Data Analysis. I have experience in developing Excel applications, building system components, performing maintenance tasks, conducting client meetings to understand their needs, and implementing solutions. I have also developed WordPress websites, APIs, bots, and more. ",
+    frase2: "After that, I kept refining and improving myself. Besides the companies I worked for, which provided me with guidance, I freelanced for a while. It was during this time that I learned what it means to have a 'sense of ownership,' as well as the importance of time management. ",
+    frase3: "I actively participated during this time, in eSports teams, serving as a captain and managing people. And here I am, renewing my knowledge, graduating in Data Science from Fatec Rubens Lara Baixada Santista and transitioning to the field of data analysis. ",
+  };
+
+
   return (
     <>
       <Navbar isDarkTheme={isDarkTheme} isEnglish={isEnglish} isSecret={isSecret}/>
@@ -304,45 +323,32 @@ export default function Main(props) {
                   <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
                 "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
                   {(isSecret  ? 
-                  (isEnglish ?  "Desperate, Harry asked about the train that left at eleven o'clock, but " +
-                                "the guard said there was none. In the end, the guard walked away" +
-                                ", grumbling about people who made him waste time." : 
-                                "Desesperado, Harry perguntou pelo trem que partia às onze horas, mas o" +
-                                "guarda disse que não havia nenhum. Ao fim, o guarda se afastou, resmungando contra pessoas" +
-                                "que o faziam perder tempo."
+                  (isEnglish ?  englishFrases.fraseHarry1 : 
+                                portugueseFrases.fraseHarry1
                                 ) :
-                  (isEnglish ? "I'm a Fullstack Developer specialized in PHP, ReactJS. In transition to Data Analysis."+
-                                "I worked with development of applications for Excel, I developed parts of a room reservation system and did maintenance." : 
-                                "Sou Fullstack Developer especializado em PHP, ReactJS. Em transição para Análise de Dados." +
-                                "Trabalhei com desenvolvimento de aplicações para Excel, desenvolvi partes de um sistema de reserva de sala e fiz manutenções."))}          
+                  (isEnglish ?  englishFrases.frase1 :
+                                portugueseFrases.frase1 ))}          
 
                  
                   </p>
                   <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
                 "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
                   {(isSecret  ? 
-                  (isEnglish ?  "Harry was lost in the middle of the station with a suitcase he could barely lift, his wizard " +
-                                "money-filled pocket, and a big owl." : 
-                                "Estava perdido no meio da estação com uma mala que mal podia levantar, o bolso cheio de dinheiro" +
-                                "de bruxo e uma corujona.") :
-                  (isEnglish ? "After that, I kept refining and improving myself. Besides the companies I worked for, which provided me with guidance. " +
-                                "I freelanced for a while. It was during this time that I learned what it means to have a 'sense of ownership,' " + 
-                                "as well as the importance of time management. " : 
-                                "Após isso, fui me aprimorando e melhorando. Além das empresas que passei e que me deram direcionamento, por um tempo, fui freelancer. " +
-                                "Aprendi nesse momento, o que é ter senso de dono, assim como, ter gestão de tempo."))}
-                  
+                  (isEnglish ?  englishFrases.fraseHarry2 : 
+                                portugueseFrases.fraseHarry2
+                                ) :
+                  (isEnglish ?  englishFrases.frase2 :
+                                portugueseFrases.frase2 ))} 
+
                   </p>
                   <p className={(isDarkTheme ? "mt-4 text-lg leading-relaxed text-gray-400 font-poppins" : 
                 "mt-4 text-lg leading-relaxed text-gray-600 font-poppins")}>
                   {(isSecret  ? 
-                  (isEnglish ?  "5972" : 
-                                "5972") :
-                  (isEnglish ? "I actively participated during this time, in eSports teams, serving as a captain and managing people. " +
-                                "And here I am, renewing my knowledge, graduating in Data Science from Fatec Rubens Lara Baixada Santista "+
-                                "and transitioning to the field of data analysis." : 
-                                "Participei ativamente durante esse tempo, em equipes de eSports, atuando como capitão e gerenciando pessoas. " +
-                                "E cá estou, renovando conhecimento, me graduando em Ciência de Dados pela Fatec Rubens Lara Baixada Santista "+
-                                "e migrando para área de análise de dados."))}  
+                  (isEnglish ?  englishFrases.fraseHarry3 : 
+                                portugueseFrases.fraseHarry3
+                                ) :
+                  (isEnglish ?  englishFrases.frase3 :
+                                portugueseFrases.frase3 ))}   
                   </p>
                   <h4 className={(isDarkTheme ? "text-2xl font-semibold mt-5 text-white font-poppins" : 
                 "text-2xl font-semibold mt-5 font-poppins")}>
