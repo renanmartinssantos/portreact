@@ -16,6 +16,7 @@ export default function Main(props) {
   const [countNine, setCountNine] = React.useState(0);
   const [countSeven, setCountSeven] = React.useState(0);
   const [countTwo, setCountTwo] = React.useState(0);
+  const [isSecretRevealed, setSecretReveled] = React.useState(false);
 
   const countF = (isF, isSecret) => {
     console.log("Libere o Cadeado: ")
@@ -68,7 +69,10 @@ export default function Main(props) {
   function resultCount(){
     console.log(countFive, countNine, countSeven, countTwo)
     if(countFive === 5 && countNine === 9 && countSeven === 7 && countTwo === 2){
+      setSecretReveled(!isSecretRevealed)
       console.log("In love with someone from Slytherin")
+    }else{
+
     }
   }
   
@@ -81,6 +85,10 @@ export default function Main(props) {
       setIsSecret(!isSecret)
     }
   }
+
+  const closePopup = () => {
+    setSecretReveled(false);
+  };
 
   function count(isDarkTheme, isPlatform){
     if(isPlatform === true){
@@ -523,7 +531,8 @@ export default function Main(props) {
               </div>
               <div className="mt-6 flex flex-wrap justify-center">          
                 <Repos isEnglish={isEnglish} isSecret={isSecret}/>
-              </div>  
+              </div>
+              
           </div>
         </section>
       </main>
@@ -536,6 +545,38 @@ export default function Main(props) {
         className="fixed z-90 top-40 left-5 bg-white hover:text-black w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center
         text-white text-4xl hover:bg-white hover:drop-shadow-2xl ">{(isEnglish ? <span className="fi fi-br w-4 h-4"></span> : <span className="fi fi-us w-4 h-4"></span> )}
       </button>
+      {/* create a popup animated that just show when isSecretRevelead is true */}
+      <div className="relative shadow-lg text-white bg-black shadow-lg flex flex-wrap items-center justify-between px-2 py-3">
+          <div className="absolute shadow-xl top-1/2 left-1/2V -translate-x-1/2 -translate-y rounded-lg rounded-t-none"><i className="fa-solid fa-circle-half-stroke"></i></div>
+      </div>
+      {isSecretRevealed && (
+        <div className="popup justify-center items-center object-center text-center">
+            <div className="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1"
+                  stroke="green"
+                  height="300px"
+                  width="300px"
+                >
+                  <path className="path"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                  />
+                </svg>
+            </div>
+            <div className="">
+            <button className="button1" onClick={closePopup}>Close</button>
+            </div>
+
+          
+        </div>
+      )}
+      {/* {(isPlatform ?  :"")} */}
+      
     </>
   );
 }
