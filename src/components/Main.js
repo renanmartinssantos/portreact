@@ -169,7 +169,7 @@ export default function Main(props) {
                             />
                         </div>
                     </div>
-                    <div className={(isSecret  ? "bg-orange-500 " : "bg-sky-900 " ) + "badge text-white"}><div className="text-uppercase">{(isSecret  ? "Aluno de Hogwarts \u2022 Duelist" : "Fullstack Developer \u2022 Data Analyst" )}</div></div>
+                    <div className={(isSecret  ? "bg-orange-500 " : "bg-sky-900 " ) + " badge text-white"}><div className="text-uppercase">{(isSecret  ? "Aluno de Hogwarts \u2022 Duelist" : "Fullstack Developer \u2022 Data Analyst" )}</div></div>
 
                     <div className="w-full px-1 lg:order-2 flex justify-center mt-6 text-center ">
                       <p className={(isDarkTheme ? "text-sm text-white body-font font-poppins" : 
